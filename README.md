@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# Sentiment-Based Stocks Tracker for Beginner Investors
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We aim to create a user-friendly platform for tracking and analyzing stocks using sentiment analysis. This platform aggregates financial news and social media mentions of various stocks and provides sentiment-based insights to guide beginner investors.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Usage](#usage)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+This project aims to provide beginner investors with insights into stock trends by analyzing sentiment from news articles. The sentiment-based recommendations feature allows users to track stocks with positive, negative, or neutral sentiment trends and receive alerts for significant sentiment shifts.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Sentiment Analysis**: Uses NLP models to analyze the sentiment (positive, negative, neutral) of news articles related to specific stocks.
+- **Data Aggregation**: Scrapes news from Yahoo Finance and Google News, consolidating relevant information in a single interface.
+- **Stock Watchlist**: Users can maintain a list of stocks to track and receive real-time sentiment updates.
+- **API Integration**: Integrates Flask API with the React frontend for seamless data handling and visualization.
+- **User-Friendly Interface**: The frontend, built with React and TypeScript, includes interactive charts for sentiment trends and educational resources for beginners.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tech Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Backend
+- **Python**: Data scraping, preprocessing, and Flask API development.
+- **BeautifulSoup**: For web scraping news articles.
+- **Hugging Face Transformers**: For sentiment analysis with pre-trained NLP models.
+- **Flask**: Provides the API layer to serve data to the frontend.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Frontend
+- **React & TypeScript**: For a responsive and dynamic user interface.
+- **Chart.js**: For visualizing sentiment trends and stock data.
+- **CSS (Tailwind)**: For styling and responsive design.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Usage
+- **Fetch Stock Data**: The system scrapes articles related to predefined stocks from Yahoo Finance and Google News.
+- **Run Sentiment Analysis**: News titles are preprocessed and passed through a sentiment analysis model to obtain sentiment scores.
+- **Display on Frontend**: Data is displayed on the frontend with sentiment trends and stock insights for the user.
